@@ -25,5 +25,4 @@ class Library extends Component {
   }
 }
 
-
 export default Library;
