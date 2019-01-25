@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
 
+
 class Album extends Component {
   constructor(props) {
     super(props);
@@ -29,8 +30,13 @@ class Album extends Component {
             <col id="song-duration-column" />
           </colgroup>  
           <tbody>
+            { 
+            this.state.album.songs.map( (song, index) =>
+              <tr>{`${ index + 1 }.  ${ song.title } ${ song.duration }`}</tr>            
+              )
+            }
           </tbody>
-        </table>
+        </table> 
       </section>
     );
   }
