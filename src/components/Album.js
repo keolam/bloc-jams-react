@@ -13,10 +13,29 @@ class Album extends Component {
       album: album,
       currentSong: album.songs[0],
       isPlaying: false,
+      currentTime: 0,
+      duration: album.songs[0].duration, 
       init: true
     };
     this.audioElement = document.createElement('audio');
     this.audioElement.src = album.songs[0].audioSrc;
+  }
+  componentDidMount() {
+    this.eventListeners = {
+      timeupdate: e => {
+        this.setState({ currentTime: this.audioElement.currentTime });
+      },
+      durationchange: e => {
+        this.setState({ duration: this.audioElement.duration });
+      }
+    };
+    this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate);
+    this.audioElement.addEventListener('durationchange', this.eventListeners.durationchange);
+  }
+  componentWillUnmount() {
+    this.audioElement.src = null;
+    this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
+    this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
   }
   play() {
     this.audioElement.play();
@@ -65,6 +84,11 @@ class Album extends Component {
     newIndex > (this.state.album.songs.length - 1) ? this.setState() : this.setSong(newSong);
     newIndex > (this.state.album.songs.length - 1) ? this.setState() : this.play();
   }
+  handleTimeChange(e) {
+    const newTime = this.audioElement.duration * e.target.value;
+    this.audioElement.currentTime = newTime;
+    this.setState({ currentTime: newTime });
+  }
   
   render() {
     const songs = this.state.album.songs.map( (song, index) => { 
@@ -104,9 +128,12 @@ class Album extends Component {
         <PlayerBar 
           isPlaying={this.state.isPlaying} 
           currentSong={this.state.currentSong}
+          currentTime={this.audioElement.currentTime}
+          duration={this.audioElement.duration}
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
           handlePrevClick={() => this.handlePrevClick()}
           handleNextClick={() => this.handleNextClick()}
+          handleTimeChange={(e) => this.handleTimeChange(e)}
         />
         
       </section>
