@@ -11,7 +11,8 @@ class Album extends Component {
     this.state = {
       album: album,
       currentSong: album.songs[0],
-      isPlaying: false
+      isPlaying: false,
+      init: true
     };
     this.audioElement = document.createElement('audio');
     this.audioElement.src = album.songs[0].audioSrc;
@@ -28,18 +29,45 @@ class Album extends Component {
     this.audioElement.src = song.audioSrc;
     this.setState({ currentSong: song });
   }
-  handleSongClick(song) {
-    const isSameSong = this.state.currentSong === song;
-    if (this.state.isPlaying && isSameSong) {
-      this.pause();
-    } else {
-      if (!isSameSong) { this.setSong(song); }
-      this.play();
+  mouseEnter(song) {
+    if (!this.state.isPlaying) {
+      this.setState({togglePlay: true});
     }
   }
+  mouseLeave(song) {
+    this.setState({togglePlay: false});
+    this.setState({currentSong: song})
+  }
+  handleSongClick(song) {
+    const isSameSong = this.state.currentSong === song;
+    this.setState({init: false})
+    if (this.state.isPlaying && isSameSong) {
+      this.pause();
+      this.setState({paused: true})
+    } else {
+      if (!isSameSong) { this.setSong(song); }
+      this.play();   
+      this.setState({paused: false})
+    }
+    
+  }
   render() {
+    const songs = this.state.album.songs.map( (song, index) => { 
+      return (
+        <tr onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.mouseEnter(song)} onMouseLeave={() => this.mouseLeave(song)}>      
+          
+          <span style={{ display: (this.state.currentSong === song && this.state.init === false )|| (this.state.togglePlay && this.state.currentSong === song)  ? 'inline'  : 'none' }}
+                className={ !this.state.isPlaying || this.state.togglePlay ? 'icon ion-md-play' : 'icon ion-md-pause'}>{"    "}</span>
+                 
+               <span style={{ display:  this.state.currentSong !== song || this.state.init === true  ? 'inline'  : 'none' }}>{ index + 1 }</span>
+                        
+              { `${ song.title } ${ song.duration }`}      
+              
+        </tr> 
+      )
+    }); 
     return (
-      <section className="album">
+      <section className="album"> 
         <section id="album-info">
           <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title}/>
           <div className="album-details">
@@ -54,12 +82,8 @@ class Album extends Component {
             <col id="song-title-column" />
             <col id="song-duration-column" />
           </colgroup>  
-          <tbody>
-            { 
-            this.state.album.songs.map( (song, index) =>
-              <tr onClick={() => this.handleSongClick(song)} >{`${ index + 1 }.  ${ song.title } ${ song.duration }`}</tr>            
-              )
-            }
+          <tbody text-align="center">
+            { songs }
           </tbody>
         </table> 
       </section>
