@@ -1,5 +1,62 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+  vertical-align: baseline;
+ 
+}
+body {
+   background-color: rgb(31, 31, 31);
+}
+nav {
+  font-family: 'Varela Round', sans-serif;
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 20px;
+}
+header h1 {
+  font-size: 40px;;
+  font-family: 'Varela Round', sans-serif;
+}
+.hero-title {
+  padding-bottom: 20px;
+}
+.selling-points .point {
+  font-size: 20px;
+  padding-bottom: 30px;
+  color: rgb(255, 227, 227);
+}
+.library {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+.library img {
+  max-width: 260px;
+}
+
 .App {
   text-align: center;
+  /*background-color: rgb(50, 52, 56);*/
+  color: #c2e0f5;
+
+}
+a:-webkit-any-link {
+  color: #61dafb;
 }
 
 .App-logo {
@@ -15,13 +72,127 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  /*  color: white;*/
 }
 
 .App-link {
   color: #61dafb;
+  
+}
+#front-page {
+  /*font-family: 'Varela Round', sans-serif;*/
+  font-family: 'Montserrat', sans-serif;
+}
+.point-description {
+  font-style: italic; 
+}
+.album {
+  display: flex;
+  border-width: 1px;
+  border-style: outset;
+  border-radius: 20px;
+  margin: 30px;
+  border-color: #c2e0f5;
+  background-color: rgb(50, 52, 56);
+  
+}
+#album-cover-art {
+  flex: 1;
+  padding: 30px 30px 30px 30px;
+	max-height: 500px;
+}
+#album-info {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+}
+.album-details {
+  text-align: left;
+  padding: 30px 30px 30px 2px;
+}
+#album-title {
+  padding: 0px 10px 10px 2px;
+  font-weight: bolder;
+  font-size: xx-large;
+ 
+}
+.artist {
+  padding: 0px 10px 10px 2px;
+  font-size: x-large;
+}
+#release-info {
+  font-size: smaller;
+}
+table {
+  table-layout: fixed;
+  align-content: center;
+  margin-right: auto;
+  align-items: flex-end;
+  display: flex;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: grey;
+}
+#song-list {
+  flex: 2;
+  text-align: left;
+  align-content: flex-end;
+  width: 600px;
+}
+tbody {
+  align-content: flex-end;
+  border: outset;
+  border-radius: 20px;
+  width: -webkit-fill-available;
+  background-color: rgb(65, 64, 64)
+}
+tr {
+  table-layout: fixed;
+  display: inline-flex;
+  width: -webkit-fill-available;
+  padding: 6px 6px 6px 20px;
+  border-radius: 20px;
+  /*border: solid 0.02px;*/
+  
+}
+#song-number-column {
+  text-align: left;
+  width: 40px;
+  
+}
+#song-title-column {
+  text-align: center;
+  width: 3000px;
+}
+#song-duration-column {
+  text-align: right;
 }
 
+.player-bar {
+  text-align: left;
+  display: inline;
+  padding: 30px 10px 30px 20px;
+  border: outset;
+  border-radius: 20px;
+  background-color: rgb(65, 64, 64)
+}
+#buttons {
+  display: inline;
+  padding: 0px 50px 0px 0px;
+}
+#time-control {
+  display: inline-flex;
+  padding: 0px 100px 0px 0px;
+}
+#volume-control {
+  display: inline-flex;
+  margin-left: auto;
+  text-align: right;
+}
+.seek-bar {
+  width: 300px;
+}
+/*
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -30,3 +201,4 @@
     transform: rotate(360deg);
   }
 }
+*/
