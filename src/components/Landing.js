@@ -1,8 +1,12 @@
 import React from 'react';
+//import landingImage from '/../public/assets/images';
 
 const Landing = () => (
   <section className="landing">
-    <h1 className="hero-title">Turn the music up!</h1>
+
+    <h1 className="hero-title">A browser based mp3 player built with ReactJS</h1>
+    <img style={{width: "100%" }} src="/assets/images/Festival.jpg"/>
+
     
     <section className="selling-points">
       <div className="point">
@@ -23,3 +27,4 @@ const Landing = () => (
 
 export default Landing;
 
+//     <img src={album.albumCover} alt={album.title} />

@@ -11,10 +11,9 @@ class App extends Component {
       <div className="App">
         <header>
           <nav>
-            <Link to='/library'>Enter Library</Link>
-            <Link to='/'>Home Page</Link>
-          </nav>
-         <h1>Bloc Jams</h1>  
+          <Link to='/' style={{textDecoration: 'none'}}><h1 style={{fontFamily: "Special Elite", fontSize: "64px"}}>REACTive Music</h1></Link>  
+          <Link to='/library' id="lib-link">Library</Link>
+         </nav>
         </header>
         <main id="front-page"> 
           <Route exact path="/" component={Landing} /> 

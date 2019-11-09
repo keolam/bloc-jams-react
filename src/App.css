@@ -23,17 +23,21 @@ body {
    background-color: rgb(31, 31, 31);
 }
 nav {
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Special Elite';
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   padding-top: 20px;
 }
 header h1 {
   font-size: 40px;;
-  font-family: 'Varela Round', sans-serif;
+  /*font-family: 'Varela Round', sans-serif;*/
 }
 .hero-title {
   padding-bottom: 20px;
+}
+#lib-link {
+  font-size: 20px;
+  margin-top: 30px;
 }
 .selling-points .point {
   font-size: 20px;
@@ -48,7 +52,9 @@ header h1 {
 .library img {
   max-width: 260px;
 }
-
+.landing {
+  font-family: 'Special Elite';
+}
 .App {
   text-align: center;
   /*background-color: rgb(50, 52, 56);*/
