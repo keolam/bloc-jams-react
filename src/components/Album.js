@@ -119,7 +119,7 @@ class Album extends Component {
       return <span className={`icon ${this.showPlayOrPause(song)}`}></span>
     }
     if (this.state.hoverSongSrc === song.audioSrc ) {
-      return <span className={`icon ${this.showPlayOrPause(song)}`}></span>
+      return <span className={`icon ${this.showPlayOrPause(song)}`}></span>;
     }
     return index + 1;
   } 

@@ -5,9 +5,9 @@ const Landing = () => (
   <section className="landing">
 
     <h1 className="hero-title">A browser based mp3 player built with ReactJS</h1>
-    <img style={{width: "100%" }} src="/assets/images/Festival.jpg"/>
+    <img style={{ width: "100%" }} src="/assets/images/Festival.jpg" alt="concert crowd" />
 
-    
+
     <section className="selling-points">
       <div className="point">
         <h2 className="point-title">Choose your music</h2>
