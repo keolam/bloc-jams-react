@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Reactive Music",
+  "name": "Reactive Music Browswer player",
   "icons": [
     {
       "src": "favicon.ico",

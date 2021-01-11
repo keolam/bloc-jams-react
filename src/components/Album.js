@@ -6,7 +6,7 @@ import PlayerBar from './PlayerBar';
 class Album extends Component {
   constructor(props) {
     super(props);
-    const album = albumData.find( album => {
+    const album = albumData.find(album => {
       return album.slug === this.props.match.params.slug
     });
     this.state = {
@@ -14,7 +14,7 @@ class Album extends Component {
       currentSong: album.songs[0],
       isPlaying: false,
       currentTime: 0,
-      duration: album.songs[0].duration, 
+      duration: album.songs[0].duration,
       currentVolume: 0.8,
       init: true,
       hoverSongSrc: '',
@@ -46,14 +46,14 @@ class Album extends Component {
   pause() {
     this.audioElement.pause();
     this.setState({ isPlaying: false });
-  }  
+  }
   setSong(song) {
     this.audioElement.src = song.audioSrc;
     this.setState({ currentSong: song });
   }
   handleSongClick(song) {
     const isSameSong = this.state.currentSong === song;
-    this.setState({init: false})
+    this.setState({ init: false })
     if (this.state.isPlaying && isSameSong) {
       this.pause();
     } else {
@@ -81,7 +81,7 @@ class Album extends Component {
     this.setState({ currentTime: newTime });
   }
   handleVolumeChange(e) {
-    const newVolume =  e.target.value;
+    const newVolume = e.target.value;
     this.audioElement.volume = newVolume;
     this.setState({ currentVolume: newVolume });
   }
@@ -109,7 +109,7 @@ class Album extends Component {
     });
   }
   showPlayOrPause(song) {
-    if(this.state.currentSong.audioSrc ===  song.audioSrc && this.state.isPlaying) {
+    if (this.state.currentSong.audioSrc === song.audioSrc && this.state.isPlaying) {
       return 'ion-md-pause';
     }
     return 'ion-md-play';
@@ -118,28 +118,28 @@ class Album extends Component {
     if (this.state.currentSong.audioSrc === song.audioSrc && !this.state.init) {
       return <span className={`icon ${this.showPlayOrPause(song)}`}></span>
     }
-    if (this.state.hoverSongSrc === song.audioSrc ) {
+    if (this.state.hoverSongSrc === song.audioSrc) {
       return <span className={`icon ${this.showPlayOrPause(song)}`}></span>;
     }
     return index + 1;
-  } 
+  }
   songList() {
-    return this.state.album.songs.map( (song, index) => { 
+    return this.state.album.songs.map((song, index) => {
       return (
-        <tr onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.mouseEnter(song)} onMouseLeave={() => this.mouseLeave(song)}>         
-          <td><div style={{width: "30px" }}>{ this.getPlayerPauseIcon(index, song) }</div></td>
-          <td><div style={{width: "500px" }}>{song.title}</div></td>
+        <tr onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.mouseEnter(song)} onMouseLeave={() => this.mouseLeave(song)}>
+          <td><div style={{ width: "30px" }}>{this.getPlayerPauseIcon(index, song)}</div></td>
+          <td><div style={{ width: "500px" }}>{song.title}</div></td>
           <td><div style={{ textAlign: "right" }}>{this.formatTime(song.duration)}</div></td>
-        </tr> 
+        </tr>
         //  { `    ${ song.title }     ${ this.formatTime(song.duration) }`}      
       )
-    }); 
+    });
   }
-  
+
   render() {
     return (
-      <section className="album"> 
-        <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title}/>
+      <section className="album">
+        <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title} />
         <section id="album-info">
           <div className="album-details">
             <h1 id="album-title">{this.state.album.title}</h1>
@@ -148,16 +148,16 @@ class Album extends Component {
           </div>
           <table id="song-list">
             <colgroup>
-              <col id="song-number-column" style={{width:"40%"}}/>
+              <col id="song-number-column" style={{ width: "40%" }} />
               <col id="song-title-column" />
               <col id="song-duration-column" />
-            </colgroup>  
+            </colgroup>
             <tbody>
-              { this.songList() }
+              {this.songList()}
             </tbody>
-          </table> 
-          <PlayerBar 
-            isPlaying={this.state.isPlaying} 
+          </table>
+          <PlayerBar
+            isPlaying={this.state.isPlaying}
             currentSong={this.state.currentSong}
             currentTime={this.audioElement.currentTime}
             duration={this.audioElement.duration}
